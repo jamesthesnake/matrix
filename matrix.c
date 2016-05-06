@@ -1,4 +1,83 @@
 #include <stdio.h>
+#include<stdlib.h>
+double *input_matrix(int* rows,int*  columns, char* name){
+ ;
+  /* First matrix */
+  printf("%s\n",name);
+  printf("Enter # of rows and cols: ");
+  scanf("%d %d",rows,columns);
+
+   int row = *rows;
+   int col = *columns; 
+  printf("Matrix, enter %d reals: \n",row*col);
+ 
+  double *m1;
+    m1= (double*)malloc(sizeof(double)*row*col); 
+  int i=0,j=0;
+  double input;
+ 
+  for(i=0; i<row; i++){
+    /* Allocate array, store pointer  */
+  
+  }
+  for(i=0; i<row; i++){
+    for(j=0; j<col; j++){
+      
+          scanf("%lf",&input);
+          m1[i*col+j]= input;
+       
+ 
+      }
+ 
+    
+    
+  }
+  
+ 
+  return(m1);
+}
+void output_matrix(double *m4, int row, int collumns) {     
+  int i=0,j=0;
+  for(i=0; i<row; i++){    /* Iterate of each row */
+    for(j=0; j<collumns; j++){  /* In each row, go over each col element  */
+      printf("%lf  ",m4[i*collumns+j]); /* Print each row element */
+  
+  }
+  
+  }
+  printf("\n");
+}
+
+double *matrix_multiply(double *m1, int m1rows, int m1col, double *m2, int m2row, int m2col, double *m3){
+                                                                                                                                                                     
+  double sum;
+  int c,d,k;
+
+                                                      
+  if (m1col== m2row){
+    
+
+
+    for (c = 0; c < m1rows; c++) {
+
+      for (d = 0; d < m2col; d++) {
+	for (k = 0; k < m2row; k++) {
+	  sum = sum + ((m1+c)[k])*((m2+k)[d]);
+          
+	}
+
+	m3[c*m2col+d] = sum;
+	sum = 0;
+     
+      }
+    }
+  } else{
+    return (NULL);
+    
+
+  }
+  return(m3);
+}
 
 
   int main(void) {
@@ -34,63 +113,6 @@
     printf("Error allocating memory\n");
     return(-2);
   }
-}
-double input_matrix(int rows,int  columns,char* name){
- 
-  double* mat;
-  int i,j;
-  double InputData;
-  printf("type in the length of rows and collumns");
-  scanf(" %d  %d", &rows,&columns);
   
-  mat = (double*) malloc(columns*rows*sizeof(double));
-  for(i=0;i<rows;i++){
-    for(j=0;j<columns;j++){
-      printf("Enter data");
-	scanf("%d",&InputData);
-
-         mat[i][j]= InputData;
-    }
-  }
-  return(mat);
-  }
 }
-double* matrix_Multiply(double* m1, int m1rows, int m1col, double* m2, int m2row, int m2col, double* m3){
   
-  double multiply[][];
-  int sum;
-  int c,d,k;
-  int m=sizeof(m1);
-  int p= sizeof(m1)/sizeof(m1[0]);
-  int q= sizeof(m2[0])/sizeof(m2[0][0]);  
-  if (length(m2[1])== length(m1[1])){
-      for (c = 0; c < p; c++){
-	for (d = 0; d < q; d++){
-	  scanf("%d", &m2[c][d]);
-	}
-      }
-      for (c = 0; c < m; c++) {
-	for (d = 0; d < q; d++) {
-	  for (k = 0; k < p; k++) {
-	    sum = sum + m1[c][k]*m2[k][d];
-	  }
- 
-	  multiply[c][d] = sum;
-	  sum = 0;
-	}
-      }
-    }
-  return(multiply);
-}
-void output_matrix( double* m3, int row, int collumns) {
-  int numberOfLines= sizeof(m3)/sizeof(m3[0]);
-  int numberColumns= sizeof(m3[0])/sizeof(m3[0][0]);
-
-	     for (int row=0; row<numberOfLines; row++)
-	       {
-		 for(int columns=0; columns<numberColumns; columns++){
-		   printf("%d     ", matrix[row][columns]);
-		 printf("\n");
-		 }
-	       }
-	     }
